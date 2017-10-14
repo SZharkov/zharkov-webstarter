@@ -1,0 +1,13 @@
+{
+  "name": "landing-page",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "v4.0.0-beta",
+    "popper.js": "^1.12.5"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "modular-scale": "^3.0.4"
+  }
+}

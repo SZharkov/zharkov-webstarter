@@ -1,0 +1,617 @@
+//////////////////////////////
+// 1. Import Vendors
+/////////////////////////////
+
+// bower:scss
+@import 'bower_components/bootstrap/scss/bootstrap.scss';
+// endbower
+
+
+/////////
+// MIXINS
+/////////
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus { @content; }
+}
+
+// Background image mixin
+@mixin bg-img($size: cover, $repeat: no-repeat, $position: 50% 50%) {
+  background-size: $size;
+  background-repeat: $repeat;
+  background-position: $position;
+}
+
+
+/////////////////////////
+// 2. Base Configuration
+////////////////////////
+
+// Utilities
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * .5),
+  2: ($spacer * 1),
+  3: ($spacer * 1.5),
+  4: ($spacer * 2),
+  5: ($spacer * 2.5),
+  6: ($spacer * 3),
+  7: ($spacer * 3.5),
+  8: ($spacer * 4),
+  9: ($spacer * 4.5),
+  10: ($spacer * 5)
+);
+
+// Grid Breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+// Containers
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+);
+
+// Grid columns
+// Set the number of columns and specify the width of the gutters.
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+// Border Radius
+$border-radius:          .25rem;
+$border-radius-lg:       .3rem;
+$border-radius-sm:       .2rem;
+
+
+
+//////////////////
+// 2.1 Typography
+/////////////////
+
+// Text Colors
+$color-accent: gold;
+$header-text-color: #000000;
+$body-text-color: #000000;
+$color-text-weak: #656A70;
+
+// Base font size (text, paragraphs)
+$base-font-size: 16px;
+
+// Header and button base font size
+$header-base-font-size: 16px;
+
+$modularscale: (
+  base: 14px,
+  ratio: 1.067,
+  425px: (
+    base: 14px,
+    ratio: 1.067,
+  ),
+  900px: (
+    base: 16px,
+    ratio: 1.067,
+  ),
+  1350px: (
+    base: $base-font-size,
+    ratio: 1.125
+  )
+);
+
+$header-modular-scale: (
+  base: 14px,
+  ratio: 1.067,
+  425px: (
+    base: 14px,
+    ratio: 1.067,
+  ),
+  900px: (
+    base: 16px,
+    ratio: 1.067,
+  ),
+  1350px: (
+    base: $header-base-font-size,
+    ratio: 1.125
+  )
+);
+
+// Line Height
+$line-height-lg:         1.5;
+$line-height-sm:         1.5;
+
+// Fonts
+$font-family-sans-serif: 'Brandon Grotesque', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:       $font-family-sans-serif;
+
+
+/////////////////////////
+// 2.2 BUTTONS AND LINKS
+////////////////////////
+
+// default button (.btn)
+$btn-bg: #161726;
+$btn-bg-hover: darken(#161726, 10%);
+$btn-text-color: #ffffff;
+$btn-text-color-hover: #ffffff;
+
+// grey button (.btn.btn-grey)
+$btn-grey-bg: #F7F7F7;
+$btn-grey-bg-hover: darken(#F7F7F7, 10%);
+$btn-grey-text-color: #04172E;
+$btn-grey-text-color-hover: #04172E;
+$btn-grey-border-color: #DEE2E8;
+
+// accent button (.btn.btn-accent)
+$btn-accent-bg: #FCA301;
+$btn-accent-bg-hover: darken(#FCA301, 5%);
+$btn-accent-text-color: #ffffff;
+$btn-accent-text-color-hover: #ffffff;
+
+// links
+$link-color:            #000;
+$link-decoration:       none;
+$link-hover-color:      darken($link-color, 15%);
+$link-hover-decoration: none;
+
+
+////////////
+// 2.3 Forms
+////////////
+
+$input-bg:                       #ffffff;
+$input-disabled-bg:              #f3f3f3;
+
+$input-color:                    #000000;
+$input-border-color:             #DEE2E8;
+$input-btn-border-width:         1px; // For form controls and buttons
+$input-box-shadow:               none;
+
+$input-border-radius:            $border-radius;
+$input-border-radius-lg:         $border-radius-lg;
+$input-border-radius-sm:         $border-radius-sm;
+
+$input-focus-bg:                 $input-bg;
+$input-focus-border-color:       darken(#DEE2E8, 10%);
+$input-focus-box-shadow:         none;
+$input-focus-color:              $input-color;
+
+$input-placeholder-color:        #eeeeee;
+$input-height-border:            $input-btn-border-width * 2;
+
+$input-transition:               border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+
+//////////////////
+// 2.4 NAVIGATION
+/////////////////
+
+$navbar-bg: #ffffff;
+$navbar-link-color: #000000;
+$navbar-link-color-hover: #FCA301;
+$navbar-collapse-breakpoint: 1280px;
+
+$nav-offcanvas-bg: #ffffff;
+$nav-offcanvas-link-color: #04172E;
+$nav-offcanvas-link-color-hover: #FCA301;
+
+
+///////////////////////
+// 3.4 BOOTSTRAP IMPORT
+//////////////////////
+
+// bower:scss
+@import "bower_components/bootstrap/scss/bootstrap.scss";
+// endbower
+
+
+/////////////////
+// 4. BASE STYLES
+/////////////////
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+* {
+  &:before,
+  &:after { box-sizing: inherit; }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  color: $body-text-color;
+  font-family: $font-family-sans-serif;
+  background-color: $body-bg;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Main Wrap
+#main {
+  flex: 1;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+// Main Wrap ends
+
+a {
+  background: transparent;
+  color: $link-color;
+  text-decoration: none;
+  transition: color .2s;
+  cursor: pointer;
+  @include hover() {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+  i {
+    color: $body-text-color;
+  }
+  &.link-nocolor {
+    color: $body-text-color;
+    &:hover {
+      color: $link-hover-color;
+    }
+  }
+}
+.linkWithArrow {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAHCAYAAAA4R3wZAAAABGdBTUEAALGPC/xhBQAAAJBJREFUGBljYCACfFuusujbSnVrZKVMyBxcbCYmpkX///5Z93W5ugkuNTjFf6xQ9fm6XPnFz2XqeiBFLN+WKf/FqRpJ4t+/fyAe0x+GP0v+//+vz8IZGcuKJI+T+W3lEl+G//9nsvxniWFkZPyPUyGyxI+Vai5flym/RPYjC7ICXGygM+MYmVmCuMJvnoGpAQCroDGVMWtkBQAAAABJRU5ErkJggg==');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 14px 7px;
+    width: 14px;
+    height: 7px;
+    top: calc(50% - 3.5px);
+    right: -22px;
+  }
+}
+
+
+p, span, address {
+  @include ms-respond(font-size,1);
+}
+
+small {
+  @include ms-respond(font-size, -1);
+}
+
+.text-xsm {
+  @include ms-respond(font-size,-1);
+}
+.text-sm {
+  @include ms-respond(font-size,0);
+}
+.text-md {
+  @include ms-respond(font-size,1);
+}
+.text-l {
+  @include ms-respond(font-size,2);
+}
+.text-xl {
+  @include ms-respond(font-size,3);
+}
+.text-xxl {
+  @include ms-respond(font-size,4);
+}
+.l-height-xl {
+  line-height: 2.375em;
+  margin-bottom: 2.5em;
+  @media (max-width: 992px) {
+    line-height: 2em;
+  }
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+// Headers (font sizes are set using Modular Scale addon)
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-family-sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $header-text-color;
+}
+
+h1 {
+  @include ms-respond(font-size,11, $header-modular-scale);
+}
+
+h2 {
+  @include ms-respond(font-size,6, $header-modular-scale);
+}
+
+h3 {
+  @include ms-respond(font-size,5, $header-modular-scale);
+}
+
+h4 {
+  @include ms-respond(font-size,3, $header-modular-scale);
+}
+
+h5 {
+  @include ms-respond(font-size,2, $header-modular-scale);
+}
+
+h6 {
+  @include ms-respond(font-size,0, $header-modular-scale);
+}
+
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+
+// ==========================================================================
+// 4.1 Helpful
+// ==========================================================================
+
+// Text Weight
+$i : 1;
+@while $i <= 9 {
+
+  /* #{$i*100} */
+  .weight#{($i * 100)} {
+    font-weight: $i * 100 !important;
+  }
+
+  $i : $i + 1;
+}
+
+
+// Text Colors
+.text-weak {
+  color: $color-text-weak;
+}
+
+
+// Opacity
+$i : 0;
+@while $i <= 1 {
+
+  /* #{$i*100} */
+  .op#{round($i*10)} {
+    opacity: $i !important;
+  }
+
+  $i : $i + 0.1;
+}
+
+// Position
+.pos-rel {
+  position: relative;
+}
+
+// Backgorund
+.bg-white {
+  background-color: #ffffff !important;
+}
+.bg-accent {
+  background-color: $color-accent !important;
+}
+
+// Background img
+.bg-img {
+  @include bg-img();
+}
+
+// Colors
+.color-white {
+  color: #ffffff;
+}
+.color-accent {
+  color: $color-accent !important;
+}
+
+// Line Height
+.l-h-165 {
+  line-height: 1.65em;
+}
+
+// Overlays
+%overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.bg-overlay {
+  @extend %overlay;
+  background-color: rgba(0,0,0, .5);
+  &-gradient {
+    @extend %overlay;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,ffffff+100 */
+    background: #000000; /* Old browsers */
+    background: -moz-linear-gradient(top, #000000 0%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #000000 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #000000 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+// Verticaly and horizontal centered with flex
+%v-h-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Box shadow
+.box-shadow {
+  box-shadow: 1px 2px 44px 0 rgba(0,0,0, 0.15);
+}
+
+
+////////
+// FONTS
+////////
+
+$font-url-base: '../fonts/';
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Black.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Black.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Black.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Black.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Black.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Black.svg#BrandonGrotesque-Black') format('svg');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Regular.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Regular.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Regular.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Regular.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Regular.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Regular.svg#BrandonGrotesque-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Medium.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Medium.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Medium.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Medium.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Medium.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Medium.svg#BrandonGrotesque-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-BoldItalic.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-BoldItalic.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BoldItalic.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BoldItalic.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BoldItalic.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BoldItalic.svg#BrandonGrotesque-BoldItalic') format('svg');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-RegularItalic.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-RegularItalic.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-RegularItalic.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-RegularItalic.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-RegularItalic.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-RegularItalic.svg#BrandonGrotesque-RegularItalic') format('svg');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-ThinItalic.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-ThinItalic.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-ThinItalic.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-ThinItalic.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-ThinItalic.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-ThinItalic.svg#BrandonGrotesque-ThinItalic') format('svg');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Bold.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Bold.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Bold.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Bold.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Bold.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Bold.svg#BrandonGrotesque-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-BlackItalic.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-BlackItalic.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BlackItalic.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BlackItalic.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BlackItalic.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-BlackItalic.svg#BrandonGrotesque-BlackItalic') format('svg');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Light.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Light.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Light.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Light.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Light.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Light.svg#BrandonGrotesque-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-LightItalic.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-LightItalic.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-LightItalic.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-LightItalic.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-LightItalic.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-LightItalic.svg#BrandonGrotesque-LightItalic') format('svg');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Thin.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-Thin.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Thin.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Thin.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Thin.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-Thin.svg#BrandonGrotesque-Thin') format('svg');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-MediumItalic.eot');
+  src: url('#{$font-url-base}hinted-subset-BrandonGrotesque-MediumItalic.eot?#iefix') format('embedded-opentype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-MediumItalic.woff2') format('woff2'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-MediumItalic.woff') format('woff'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-MediumItalic.ttf') format('truetype'),
+  url('#{$font-url-base}hinted-subset-BrandonGrotesque-MediumItalic.svg#BrandonGrotesque-MediumItalic') format('svg');
+  font-weight: 500;
+  font-style: italic;
+}

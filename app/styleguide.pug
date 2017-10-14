@@ -1,0 +1,124 @@
+extends layouts/base
+
+block content
+  .container.pt-6
+    h1 H1. Heading
+    h2 H2. Heading
+    h3 H3. Heading
+    h4 H4. Heading
+    h5 h5. Heading
+    h6 h6. Heading
+    hr
+    h5 Paragraph
+    p
+      | The Kitchen Tables is a raised, semi-private space at the back of our dining room that overlooks the open kitchen
+      | with a great view of our living wall. Perfect for groups of 14 and under who are looking for a unique, lively and
+      | interactive dining experience in the middle of the culinary action.
+      | A-la-carte and tasting menus subject to availability.
+    hr
+    h5 Text large
+    p.text-l
+      | The Kitchen Tables is a raised, semi-private space at the back of our dining room that overlooks the
+      | open kitchen with a great view of our living wall. Perfect for groups of 14 and under who are looking for a unique,
+      | lively and interactive dining experience in the middle of the culinary action.
+      | A-la-carte and tasting menus subject to availability.
+    hr
+    h5 Text x-large
+    p.text-xl
+      | The Kitchen Tables is a raised, semi-private space at the back of our dining room that overlooks
+      | the open kitchen with a great view of our living wall. Perfect for groups of 14 and under who are looking for a
+      | unique, lively and interactive dining experience in the middle of the culinary action.
+      | A-la-carte and tasting menus subject to availability.
+    hr
+    h5 Text xx-large
+    p.text-xxl
+      | The Kitchen Tables is a raised, semi-private space at the back of our dining room that overlooks
+      | the open kitchen with a great view of our living wall. Perfect for groups of 14 and under who are looking for a
+      | unique, lively and interactive dining experience in the middle of the culinary action.
+      | A-la-carte and tasting menus subject to availability.
+    hr
+    h5 Text Medium (weight 500)
+    p.weight500
+      | The Kitchen Tables is a raised, semi-private space at the back of our dining room that overlooks
+      | the open kitchen with a great view of our living wall. Perfect for groups of 14 and under who are looking for a
+      | unique, lively and interactive dining experience in the middle of the culinary action.
+      | A-la-carte and tasting menus subject to availability.
+    hr
+    h5 Links
+    a(href="#") Simple Link
+    br
+    a.text-l(href="#") Simple Link
+    br
+    a.text-xl(href="#") Simple Link
+    br
+    a.text-xxl(href="#") Simple Link
+    hr
+    h5 Lists
+    ul.list-unstyled
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+    ul.list-unstyled.text-l
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+    ul.list-unstyled.text-xl
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+    ul.list-unstyled.text-xxl
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+      li This is a simple unstyled list
+    hr
+    h5 List Inline
+    ul.list-inline
+      li Inline
+      li Inline
+      li Inline
+      li Inline
+    ul.list-inline.text-l
+      li Inline
+      li Inline
+      li Inline
+      li Inline
+    ul.list-inline.text-xl
+      li Inline
+      li Inline
+      li Inline
+      li Inline
+    ul.list-inline.text-xxl
+      li Inline
+      li Inline
+      li Inline
+      li Inline
+    hr
+    h5 Buttons
+    button.btn.m-b-0-half Button
+    button.btn.btn-accent.m-b-0-half Accent
+    button.btn.btn-accent.btn-noFixedWidth.m-b-0-half Chat
+  .container
+    hr
+    h5 Video
+    h1 Video Title - Cooking Series 1
+    .embed-responsive.embed-responsive-16by9.mb-2
+      iframe.embed-responsive-item(src="https://www.youtube.com/embed/Co1oj3o4tbE", frameborder="0", allowfullscreen="", webkitallowfullscreen="", mozallowfullscreen="")
+    .embed-responsive.embed-responsive-16by9.mb-2
+      iframe.embed-responsive-item(src="https://player.vimeo.com/video/216976160", frameborder="0", allowfullscreen="", webkitallowfullscreen="", mozallowfullscreen="")
+    .row
+      .col-md-6
+        h5 16:9 Responsive Aspect Ratio
+        .embed-responsive.embed-responsive-16by9
+          iframe.embed-responsive-item(src="https://www.youtube.com/embed/Co1oj3o4tbE", frameborder="0", allowfullscreen="", webkitallowfullscreen="", mozallowfullscreen="")
+      .col-md-6
+        h5 4:3 Responsive Aspect Ratio
+        .embed-responsive.embed-responsive-4by3
+          iframe.embed-responsive-item(src="https://player.vimeo.com/video/216976160", frameborder="0", allowfullscreen="", webkitallowfullscreen="", mozallowfullscreen="")
+    hr
+    h5 Modal Video
+    ul.list-unstyled.text-l
+      li
+        a(data-fancybox="", href="https://www.youtube.com/watch?v=wOzbPOJYFb8", savefrom_lm_index="0", savefrom_lm="1") YouTube video
+      li
+        a(data-fancybox="", href="https://vimeo.com/191947042?color=f00") Vimeo video
+
